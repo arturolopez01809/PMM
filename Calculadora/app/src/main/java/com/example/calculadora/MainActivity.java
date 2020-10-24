@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         botonUno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText("1");
+                textView_grande.setText(textView_grande.getText() + "1");
             }
         });
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         botonDos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText("2");
+                textView_grande.setText(textView_grande.getText() + "2");
             }
         });
 
@@ -52,10 +52,175 @@ public class MainActivity extends AppCompatActivity {
         botonTres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText("3");
+                textView_grande.setText(textView_grande.getText() + "3");
             }
         });
 
+        Button botonCuatro = findViewById(R.id.buttonCuatro);
+
+        botonCuatro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_grande.setText(textView_grande.getText() + "4");
+            }
+        });
+
+        Button botonCinco= findViewById(R.id.buttonCinco);
+
+        botonCinco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_grande.setText(textView_grande.getText() + "5");
+            }
+        });
+
+        Button botonSeis = findViewById(R.id.buttonSeis);
+
+        botonSeis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_grande.setText(textView_grande.getText() + "6");
+            }
+        });
+
+        Button botonSiete = findViewById(R.id.buttonSiete);
+
+        botonSiete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_grande.setText(textView_grande.getText() + "7");
+            }
+        });
+
+        Button botonOcho = findViewById(R.id.buttonOcho);
+
+        botonOcho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_grande.setText(textView_grande.getText() + "8");
+            }
+        });
+
+        Button botonNueve = findViewById(R.id.buttonNueve);
+
+        botonNueve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_grande.setText(textView_grande.getText() + "9");
+            }
+        });
+
+        Button botonCero = findViewById(R.id.buttonCero);
+
+        botonCero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_grande.setText(textView_grande.getText() + "0");
+            }
+        });
+
+        Button botonSumar = findViewById(R.id.buttonSumar);
+
+        botonSumar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operando1 = Double.valueOf((String) textView_grande.getText());
+                textView_enano.setText(textView_grande.getText() + "+");
+                textView_grande.setText("");
+                operador = "+";
+            }
+        });
+
+        Button botonDividir = findViewById(R.id.buttonDividir);
+
+        botonDividir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operando1 = Double.valueOf((String) textView_grande.getText());
+                textView_enano.setText(textView_grande.getText() + "/");
+                textView_grande.setText("");
+                operador = "/";
+            }
+        });
+
+        Button botonProducto = findViewById(R.id.buttonProducto);
+
+        botonProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operando1 = Double.valueOf((String) textView_grande.getText());
+                textView_enano.setText(textView_grande.getText() + "%");
+                textView_grande.setText("");
+                operador = "%";
+            }
+        });
+
+        Button botonMultiplicar = findViewById(R.id.buttonMultiplicar);
+
+        botonMultiplicar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operando1 = Double.valueOf((String) textView_grande.getText());
+                textView_enano.setText(textView_grande.getText() + "*");
+                textView_grande.setText("");
+                operador = "*";
+            }
+        });
+
+        Button botonResta = findViewById(R.id.buttonResta);
+
+        botonResta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operando1 = Double.valueOf((String) textView_grande.getText());
+                textView_enano.setText(textView_grande.getText() + "-");
+                textView_grande.setText("");
+                operador = "-";
+            }
+        });
+
+        Button botonIgual = findViewById(R.id.buttonIgual);
+
+        botonIgual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
+
+                textView_enano.setText(operando1 + " " + operador + " " + operando2);
+                double res = 0.0;
+
+                if(operador == "+"){
+                    res = Sumar(operando1, operando2);
+                }else if(operador == "-"){
+                    res = Restar(operando1, operando2);
+                } else if(operador == "*"){
+                    res = Multiplicar(operando1, operando2);
+                } else if(operador == "/"){
+                    res = Dividir(operando1, operando2);
+                }
+
+                textView_grande.setText(String.valueOf(res));
+
+            }
+        });
+
+    }
+
+    public double Sumar(double a, double b){
+        return a + b;
+    }
+
+    public double Restar(double a, double b){
+        return a - b;
+    }
+
+    public double Multiplicar(double a, double b){
+        return a * b;
+    }
+
+    public double Dividir(double a, double b){
+        return a / b;
     }
 
     @Override
