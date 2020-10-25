@@ -11,9 +11,10 @@ public class MainActivity extends AppCompatActivity {
 
     private double operando1 = 0.0;
     private double operando2 = 0.0;
-    private String operador;
+    private String operador = "";
     private int contador_operadores  = 0;
     private double res = 0.0;
+    private boolean poder_borrar = true;
 
     public void CrearMetodosBotonses(){
 
@@ -40,8 +41,15 @@ public class MainActivity extends AppCompatActivity {
         botonUno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "1");
-                operando2 = 1;
+                if(poder_borrar){
+                    textView_grande.setText("1");
+                    poder_borrar = false;
+                } else if(!poder_borrar) {
+                    textView_grande.setText(textView_grande.getText() + "1");
+                    operando2 = 1;
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
             }
         });
 
@@ -59,8 +67,14 @@ public class MainActivity extends AppCompatActivity {
         botonDos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "2");
-                operando2 = 2;
+                if(poder_borrar){
+                    textView_grande.setText("2");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "2");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
             }
         });
 
@@ -69,8 +83,14 @@ public class MainActivity extends AppCompatActivity {
         botonTres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "3");
-                operando2 = 3;
+                if(poder_borrar){
+                    textView_grande.setText("3");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "3");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
             }
         });
 
@@ -79,8 +99,14 @@ public class MainActivity extends AppCompatActivity {
         botonCuatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "4");
-                operando2 = 4;
+                if(poder_borrar){
+                    textView_grande.setText("4");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "4");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
             }
         });
 
@@ -89,8 +115,14 @@ public class MainActivity extends AppCompatActivity {
         botonCinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "5");
-                operando2 = 5;
+                if(poder_borrar){
+                    textView_grande.setText("5");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "5");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
             }
         });
 
@@ -99,8 +131,14 @@ public class MainActivity extends AppCompatActivity {
         botonSeis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "6");
-                operando2 = 6;
+                if(poder_borrar){
+                    textView_grande.setText("6");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "6");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
             }
         });
 
@@ -109,8 +147,14 @@ public class MainActivity extends AppCompatActivity {
         botonSiete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "7");
-                operando2 = 7;
+                if(poder_borrar){
+                    textView_grande.setText("7");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "7");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
             }
         });
 
@@ -119,8 +163,14 @@ public class MainActivity extends AppCompatActivity {
         botonOcho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "8");
-                operando2 = 8;
+                if(poder_borrar){
+                    textView_grande.setText("8");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "8");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
             }
         });
 
@@ -129,8 +179,16 @@ public class MainActivity extends AppCompatActivity {
         botonNueve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "9");
-                operando2 = 9;
+                if(poder_borrar){
+                    textView_grande.setText("9");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "9");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
+
+
             }
         });
 
@@ -139,8 +197,32 @@ public class MainActivity extends AppCompatActivity {
         botonCero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + "0");
-                operando2 = 0;
+                if(poder_borrar){
+                    textView_grande.setText("0");
+                    poder_borrar = false;
+                } else if(!poder_borrar){
+                    textView_grande.setText(textView_grande.getText() + "0");
+                }
+
+                operando2 = Double.valueOf((String) textView_grande.getText());
+            }
+        });
+
+        Button botonMasMenos = findViewById(R.id.buttonMasMenos);
+
+        botonMasMenos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(operando2 >= 0){
+                    operando2*=-1;
+                } else {
+                    operando2*=-1;
+                }
+
+                textView_grande.setText(String.valueOf(operando2));
+
+                poder_borrar = true;
             }
         });
 
@@ -150,34 +232,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                textView_enano.append(operando2 + " + ");
+
                 RealizarOperacion();
 
-                if(contador_operadores == 0) {
+                textView_grande.setText(String.valueOf(res));
 
-                    operando2 = 0.0;
-                    operando1 = Double.valueOf((String) textView_grande.getText());
-
-                    res = Sumar(operando1 ,operando2);
-
-                    textView_enano.setText(String.valueOf(res));
-                }
-
-                if(contador_operadores >= 1){
-
-                    operando1 = Double.valueOf((String) textView_enano.getText());
-                    //operando2 = Double.valueOf((String) textView_grande.getText());
-
-                    res = Sumar(operando1, operando2);
-
-                    textView_enano.setText(String.valueOf(res));
-                }
-
-                textView_grande.setText(textView_grande.getText() + " + ");
-
-                //textView_grande.setText("");
-
-                contador_operadores++;
-
+                poder_borrar = true;
                 operador = "+";
             }
         });
@@ -188,34 +249,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                textView_enano.append(operando2 + " / ");
 
-                if(contador_operadores == 0) {
+                RealizarOperacion();
 
-                    operando2 = 1;
-                    operando1 = Double.valueOf((String) textView_grande.getText());
+                textView_grande.setText(String.valueOf(res));
 
-                    res = Dividir(operando1 ,operando2);
-
-                    textView_enano.setText(String.valueOf(res));
-                }
-
-                if(contador_operadores >= 1){
-
-                    operando1 = Double.valueOf((String) textView_enano.getText());
-                    //operando2 = Double.valueOf((String) textView_grande.getText());
-
-                    res = Dividir(operando1, operando2);
-
-                    textView_enano.setText(String.valueOf(res));
-                }
-
-                textView_grande.setText(textView_grande.getText() + " / ");
-
-                //textView_grande.setText("");
-
-                contador_operadores++;
-
+                poder_borrar = true;
                 operador = "/";
+
             }
         });
 
@@ -224,9 +266,13 @@ public class MainActivity extends AppCompatActivity {
         botonProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operando1 = Double.valueOf((String) textView_grande.getText());
-                textView_enano.setText(textView_grande.getText() + "%");
-                textView_grande.setText("");
+                textView_enano.append(operando2 + " % ");
+
+                RealizarOperacion();
+
+                textView_grande.setText(String.valueOf(res));
+
+                poder_borrar = true;
                 operador = "%";
             }
         });
@@ -236,9 +282,13 @@ public class MainActivity extends AppCompatActivity {
         botonMultiplicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operando1 = Double.valueOf((String) textView_grande.getText());
-                textView_enano.setText(textView_grande.getText() + "*");
-                textView_grande.setText("");
+                textView_enano.append(operando2 + " * ");
+
+                RealizarOperacion();
+
+                textView_grande.setText(String.valueOf(res));
+
+                poder_borrar = true;
                 operador = "*";
             }
         });
@@ -248,9 +298,13 @@ public class MainActivity extends AppCompatActivity {
         botonResta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operando1 = Double.valueOf((String) textView_grande.getText());
-                textView_enano.setText(textView_grande.getText() + "-");
-                textView_grande.setText("");
+                textView_enano.append(operando2 + " - ");
+
+                RealizarOperacion();
+
+                textView_grande.setText(String.valueOf(res));
+
+                poder_borrar = true;
                 operador = "-";
             }
         });
@@ -261,22 +315,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                textView_enano.setText(textView_grande.getText());
+                textView_enano.append(String.valueOf(operando2) + " =");
 
                 RealizarOperacion();
 
                 textView_grande.setText(String.valueOf(res));
 
-                contador_operadores = 0;
+                poder_borrar = true;
+                operando1 = 0.0;
+                operando2 = 0.0;
+                operador = "";
 
             }
         });
-
     }
 
     public void RealizarOperacion(){
-
-        if(operador == "+"){
+        if(operador == ""){
+            res = operando2;
+        } else if(operador == "+"){
             res = Sumar(res, operando2);
         }else if(operador == "-"){
             res = Restar(res, operando2);
@@ -284,6 +341,8 @@ public class MainActivity extends AppCompatActivity {
             res = Multiplicar(res, operando2);
         } else if(operador == "/"){
             res = Dividir(res, operando2);
+        } else if(operador == "%"){
+            res = Producto(operando2);
         }
 
     }
@@ -302,6 +361,10 @@ public class MainActivity extends AppCompatActivity {
 
     public double Dividir(double a, double b){
         return a / b;
+    }
+
+    public double Producto(double a){
+        return a/100;
     }
 
     @Override
