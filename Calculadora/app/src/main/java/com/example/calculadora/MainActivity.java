@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private double operando1 = 0.0;
     private double operando2 = 0.0;
     private String operador;
+    private int contador_operadores  = 0;
+    private double res = 0.0;
 
     public void CrearMetodosBotonses(){
 
@@ -25,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 textView_grande.setText("");
                 textView_enano.setText("");
+                operando1 = 0.0;
+                operando2 = 0.0;
+                operador = "";
+                res = 0.0;
             }
         });
 
@@ -35,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "1");
+                operando2 = 1;
+            }
+        });
+
+        Button botonPunto = findViewById(R.id.buttonPunto);
+
+        botonPunto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView_grande.setText(textView_grande.getText() + ".");
             }
         });
 
@@ -44,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "2");
+                operando2 = 2;
             }
         });
 
@@ -53,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "3");
+                operando2 = 3;
             }
         });
 
@@ -62,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "4");
+                operando2 = 4;
             }
         });
 
@@ -71,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "5");
+                operando2 = 5;
             }
         });
 
@@ -80,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "6");
+                operando2 = 6;
             }
         });
 
@@ -89,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "7");
+                operando2 = 7;
             }
         });
 
@@ -98,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "8");
+                operando2 = 8;
             }
         });
 
@@ -107,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "9");
+                operando2 = 9;
             }
         });
 
@@ -116,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.setText(textView_grande.getText() + "0");
+                operando2 = 0;
             }
         });
 
@@ -124,9 +149,35 @@ public class MainActivity extends AppCompatActivity {
         botonSumar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operando1 = Double.valueOf((String) textView_grande.getText());
-                textView_enano.setText(textView_grande.getText() + "+");
-                textView_grande.setText("");
+
+                RealizarOperacion();
+
+                if(contador_operadores == 0) {
+
+                    operando2 = 0.0;
+                    operando1 = Double.valueOf((String) textView_grande.getText());
+
+                    res = Sumar(operando1 ,operando2);
+
+                    textView_enano.setText(String.valueOf(res));
+                }
+
+                if(contador_operadores >= 1){
+
+                    operando1 = Double.valueOf((String) textView_enano.getText());
+                    //operando2 = Double.valueOf((String) textView_grande.getText());
+
+                    res = Sumar(operando1, operando2);
+
+                    textView_enano.setText(String.valueOf(res));
+                }
+
+                textView_grande.setText(textView_grande.getText() + " + ");
+
+                //textView_grande.setText("");
+
+                contador_operadores++;
+
                 operador = "+";
             }
         });
@@ -136,9 +187,34 @@ public class MainActivity extends AppCompatActivity {
         botonDividir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operando1 = Double.valueOf((String) textView_grande.getText());
-                textView_enano.setText(textView_grande.getText() + "/");
-                textView_grande.setText("");
+
+
+                if(contador_operadores == 0) {
+
+                    operando2 = 1;
+                    operando1 = Double.valueOf((String) textView_grande.getText());
+
+                    res = Dividir(operando1 ,operando2);
+
+                    textView_enano.setText(String.valueOf(res));
+                }
+
+                if(contador_operadores >= 1){
+
+                    operando1 = Double.valueOf((String) textView_enano.getText());
+                    //operando2 = Double.valueOf((String) textView_grande.getText());
+
+                    res = Dividir(operando1, operando2);
+
+                    textView_enano.setText(String.valueOf(res));
+                }
+
+                textView_grande.setText(textView_grande.getText() + " / ");
+
+                //textView_grande.setText("");
+
+                contador_operadores++;
+
                 operador = "/";
             }
         });
@@ -185,25 +261,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                textView_enano.setText(textView_grande.getText());
 
-                textView_enano.setText(operando1 + " " + operador + " " + operando2);
-                double res = 0.0;
-
-                if(operador == "+"){
-                    res = Sumar(operando1, operando2);
-                }else if(operador == "-"){
-                    res = Restar(operando1, operando2);
-                } else if(operador == "*"){
-                    res = Multiplicar(operando1, operando2);
-                } else if(operador == "/"){
-                    res = Dividir(operando1, operando2);
-                }
+                RealizarOperacion();
 
                 textView_grande.setText(String.valueOf(res));
 
+                contador_operadores = 0;
+
             }
         });
+
+    }
+
+    public void RealizarOperacion(){
+
+        if(operador == "+"){
+            res = Sumar(res, operando2);
+        }else if(operador == "-"){
+            res = Restar(res, operando2);
+        } else if(operador == "*"){
+            res = Multiplicar(res, operando2);
+        } else if(operador == "/"){
+            res = Dividir(res, operando2);
+        }
 
     }
 
