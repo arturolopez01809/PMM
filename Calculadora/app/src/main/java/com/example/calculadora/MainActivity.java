@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         botonPunto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_grande.setText(textView_grande.getText() + ".");
+                textView_grande.append(".");
             }
         });
 
@@ -232,14 +233,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                textView_enano.append(operando2 + " + ");
+                if(textView_grande.getText() == ""){
+                    Toast.makeText(getApplicationContext(), "ERROR...NÚMERO NO ENCONTRADO", Toast.LENGTH_LONG).show();
+                } else {
+                    //textView_enano.append(operando2 + " + ");
 
-                RealizarOperacion();
+                    RealizarOperacion();
 
-                textView_grande.setText(String.valueOf(res));
+                    textView_enano.setText(String.valueOf(res));
 
-                poder_borrar = true;
-                operador = "+";
+                    poder_borrar = true;
+                    operador = "+";
+                }
+
             }
         });
 
@@ -249,15 +255,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                textView_enano.append(operando2 + " / ");
+                if(textView_grande.getText() == ""){
+                    Toast.makeText(getApplicationContext(), "ERROR...NÚMERO NO ENCONTRADO", Toast.LENGTH_LONG).show();
+                }else {
+                    //textView_enano.append(operando2 + " / ");
 
-                RealizarOperacion();
+                    RealizarOperacion();
 
-                textView_grande.setText(String.valueOf(res));
+                    textView_enano.setText(String.valueOf(res));
 
-                poder_borrar = true;
-                operador = "/";
-
+                    poder_borrar = true;
+                    operador = "/";
+                }
             }
         });
 
@@ -266,14 +275,19 @@ public class MainActivity extends AppCompatActivity {
         botonProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_enano.append(operando2 + " % ");
 
-                RealizarOperacion();
+                if(textView_grande.getText() == ""){
+                    Toast.makeText(getApplicationContext(), "ERROR...NÚMERO NO ENCONTRADO", Toast.LENGTH_LONG).show();
+                } else {
+                    //textView_enano.append(operando2 + " % ");
 
-                textView_grande.setText(String.valueOf(res));
+                    RealizarOperacion();
 
-                poder_borrar = true;
-                operador = "%";
+                    textView_enano.setText(String.valueOf(res));
+
+                    poder_borrar = true;
+                    operador = "%";
+                }
             }
         });
 
@@ -282,11 +296,11 @@ public class MainActivity extends AppCompatActivity {
         botonMultiplicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_enano.append(operando2 + " * ");
+                //textView_enano.append(operando2 + " * ");
 
                 RealizarOperacion();
 
-                textView_grande.setText(String.valueOf(res));
+                textView_enano.setText(String.valueOf(res));
 
                 poder_borrar = true;
                 operador = "*";
@@ -298,14 +312,20 @@ public class MainActivity extends AppCompatActivity {
         botonResta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView_enano.append(operando2 + " - ");
 
-                RealizarOperacion();
+                if(textView_grande.getText() == ""){
+                    textView_grande.setText("-");
+                    poder_borrar = false;
+                } else {
+                    //textView_enano.append(operando2 + " - ");
 
-                textView_grande.setText(String.valueOf(res));
+                    RealizarOperacion();
 
-                poder_borrar = true;
-                operador = "-";
+                    textView_grande.setText(String.valueOf(res));
+
+                    poder_borrar = true;
+                    operador = "-";
+                }
             }
         });
 
@@ -315,11 +335,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                textView_enano.append(String.valueOf(operando2) + " =");
+                //textView_enano.append(String.valueOf(operando2) + " =");
+                //textView_enano.setText(String.valueOf(res));
 
                 RealizarOperacion();
 
-                textView_grande.setText(String.valueOf(res));
+                //textView_enano.setText(String.valueOf(res));
+
+                textView_enano.setText(String.valueOf(res));
 
                 poder_borrar = true;
                 operando1 = 0.0;
